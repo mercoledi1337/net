@@ -8,6 +8,7 @@
         public string Wystawiajacy { get; set; }
         public string Zalecenia { get; set; }
         public string Dawkowanie { get; set; }
+        public int PacjentId { get; set; }
         public Pacjent Pacjent { get; set; }
         public ICollection<LekRecepta> LekiRecepty { get; set; }
     }

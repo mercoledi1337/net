@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Controllers",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\router",
+    "\\frontend\\src\\store",
+    "\\frontend\\src\\views",
+    "\\Models"
+  ],
+  "SelectedNode": "\\Przychodnia.csproj",
+  "PreviewInSolutionExplorer": false
+}

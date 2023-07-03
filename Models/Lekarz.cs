@@ -1,4 +1,6 @@
-﻿namespace Przychodnia.Models
+﻿using Przychodnia.Dto;
+
+namespace Przychodnia.Models
 {
     public class Lekarz
     {

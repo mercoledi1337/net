@@ -36,22 +36,13 @@ namespace Przychodnia.Data
                 .WithMany(lr => lr.LekiRecepty)
                 .HasForeignKey(ls => ls.ReceptaId);
 
-
-            
-
-
-
-
-
-            modelBuilder.Entity<Wizyta>()
-                .HasOne(w => w.Termin)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Restrict);
-
-
-
-
-
+            {
+                modelBuilder.Entity<Wizyta>()
+                    .HasOne(w => w.Termin)
+                    .WithMany()
+                    .HasForeignKey(w => w.TerminId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            }
 
 
 

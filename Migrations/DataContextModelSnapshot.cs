@@ -191,10 +191,6 @@ namespace Przychodnia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Haslo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Imie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -203,9 +199,23 @@ namespace Przychodnia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PasswordResetToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Pesel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ResetTokenExpires")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Rodzaj")
                         .IsRequired()
@@ -242,8 +252,7 @@ namespace Przychodnia.Migrations
 
                     b.HasIndex("PacjentId");
 
-                    b.HasIndex("TerminId")
-                        .IsUnique();
+                    b.HasIndex("TerminId");
 
                     b.ToTable("Wizyty");
                 });
@@ -320,9 +329,9 @@ namespace Przychodnia.Migrations
                         .IsRequired();
 
                     b.HasOne("Przychodnia.Models.Termin", "Termin")
-                        .WithOne()
-                        .HasForeignKey("Przychodnia.Models.Wizyta", "TerminId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany()
+                        .HasForeignKey("TerminId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Pacjent");
